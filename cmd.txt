@@ -1,0 +1,21 @@
+
+
+$ php artisan
+
+$ php artisan route:list
+
+$ php artisan make:controller PostController
+
+$ php artisan make:controller --resource PostController
+
+
+$ php artisan make:migration create_posts_table --create="posts"
+$ php artisan make:model Post
+
+OR
+
+$ php artisan make:model Post -m
+
+
+many to many relation (pivot table)
+

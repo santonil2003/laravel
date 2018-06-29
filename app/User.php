@@ -26,4 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /**
+     * one to one-to-one-relationship
+     */
+    public function post(){
+        return $this->hasOne('App\Post');
+    }
+
+    /**
+     * one to one-to-one-relationship
+     */
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
+
+
+    public function roles(){
+        return $this->belongsToMany('App\Role');
+    }
 }
