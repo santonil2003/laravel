@@ -192,7 +192,7 @@ Route::get('/video/{id}/tags', function($id){
  *tag-owner
  */
 Route::get('/tag-owner/{id}',function($id){
-    return $tag = \App\Tag::findOrFail($id);
+    $tag = \App\Tag::findOrFail($id);
 
     return $tag->posts;
 
