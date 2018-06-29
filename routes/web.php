@@ -117,7 +117,7 @@ Route::get('/get-role-users/{id}', function($id){
 });
 
 
-// access of pivot table
+// access of pivot table, many to many....
 Route::get('/user/pivot', function(){
 
     $user = \App\User::find(2);
@@ -168,6 +168,33 @@ Route::get('photo-owner/{id}',function($id){
    $photo = \App\Photo::findOrFail($id);
 
    return $photo->imageable;
+
+
+});
+
+// polymorphic many to many
+Route::get('/post/{id}/tags', function($id){
+
+    $post = \App\Post::findOrFail($id);
+
+    return $post->tags;
+});
+
+Route::get('/video/{id}/tags', function($id){
+
+    $video = \App\Video::findOrFail($id);
+
+    return $video->tags;
+});
+
+
+/**
+ *tag-owner
+ */
+Route::get('/tag-owner/{id}',function($id){
+    return $tag = \App\Tag::findOrFail($id);
+
+    return $tag->posts;
 
 
 });
