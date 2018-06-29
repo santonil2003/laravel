@@ -19,3 +19,27 @@ $ php artisan make:model Post -m
 
 many to many relation (pivot table)
 
+pivot table should be singular form of related table names ordered alphabetically seperated by underscore.
+
+eg.
+Users , Roles  => role_user
+
+and pivot table should have
+primary key of both table in it as FK.
+
+e.g
+role_user 's column
+id
+role_id
+user_id
+
+
+
+$  php artisan make:model Country -m
+
+$ php artisan make:migration add_country_id_column_to_users --table=users   // add country id column to users
+
+
+
+
+

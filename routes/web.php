@@ -110,3 +110,53 @@ Route::get('/get-user-role/{id}', function($id){
     return $roles;
 });
 
+Route::get('/get-role-users/{id}', function($id){
+    $users = \App\Role::find($id)->users;
+
+    return $users;
+});
+
+
+// access of pivot table
+Route::get('/user/pivot', function(){
+
+    $user = \App\User::find(2);
+
+    foreach($user->roles as $role){
+        echo $role->pivot;
+    }
+
+
+
+});
+
+
+Route::get('/user/country/{id}', function($id){
+    $countries  = \App\Country::find($id);
+
+    foreach($countries->posts as $post){
+
+        echo $post;
+    }
+});
+
+
+// polymorphic relations
+
+Route::get('/poly-user/{id}', function($id){
+    $user = \App\User::find($id);
+
+
+    foreach($user->photos as $photo){
+        echo $photo;
+    }
+});
+
+
+Route::get('/poly-post/{id}', function($id){
+    $post = \App\Post::find($id);
+
+    foreach($post->photos as $photo){
+        echo $photo;
+    }
+});
