@@ -154,9 +154,20 @@ Route::get('/poly-user/{id}', function($id){
 
 
 Route::get('/poly-post/{id}', function($id){
-    $post = \App\Post::find($id);
+    $post = \App\Post::findOrFail($id);
 
     foreach($post->photos as $photo){
         echo $photo;
     }
+});
+
+/**
+ * photo-owner
+ */
+Route::get('photo-owner/{id}',function($id){
+   $photo = \App\Photo::findOrFail($id);
+
+   return $photo->imageable;
+
+
 });
